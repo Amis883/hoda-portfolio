@@ -4,7 +4,9 @@ import Grid from "@/components/Grid";
 import RecentProjects from "@/components/RecentProjects";
 import { navItems } from "@/data";
 import Clients from "@/components/Clients";
+import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
+
 export default function Home() {
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -14,6 +16,7 @@ export default function Home() {
         <Grid />
         <RecentProjects />
         <Clients />
+        <Approach />
         <Experience />
       </div>
     </main>
