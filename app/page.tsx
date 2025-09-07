@@ -6,6 +6,7 @@ import { navItems } from "@/data";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Clients />
         <Approach />
         <Experience />
+        <Footer />
       </div>
     </main>
   );
