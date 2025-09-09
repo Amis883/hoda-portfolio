@@ -49,3 +49,8 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 │ └── FloatingNav.tsx
 ├── public
 │ └── screenshots
+
+---
+
+##  License
+This project is licensed under the MIT License.
