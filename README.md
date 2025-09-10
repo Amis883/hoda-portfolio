@@ -31,7 +31,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 ## Screenshots
 | Desktop | Mobile |
 |---------|--------|
-| ![Desktop](./public/assets/images/screenshot-desktop.png) | ![Mobile](./public/assets/images/screenshot-mobile.png) |
+| ![Desktop](public/assets/images/screenshot-desktop.png) | ![Mobile](public/assets/images/screenshot-mobile.png) |
 
 ---
 
