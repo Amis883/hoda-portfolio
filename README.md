@@ -23,16 +23,15 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 ---
 
 ## Live Demo
-👉 [View Portfolio Online](https://your-portfolio.vercel.app)  
+ [View Portfolio Online](https://your-portfolio.vercel.app)  
 *(replace this with your actual deployed link on Vercel)*
 
 ---
 
 ## Screenshots
-*(add your screenshots to `public/screenshots` and update the paths)*
-
-![Homepage Screenshot](./public/screenshots/homepage.png)  
-![Projects Screenshot](./public/screenshots/projects.png)  
+| Desktop | Mobile |
+|---------|--------|
+| ![Desktop](./assets/images/screenshot-desktop.png) | ![Mobile](./assets/images/screenshot-mobile.png) |
 
 ---
 
