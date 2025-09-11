@@ -170,29 +170,29 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
+    title: "Frontend Engineer",
     desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", 
+    title: "Frontend Developer – Software Development Firm",
+    desc: "Developed modern web features using React.js and maintained clean, scalable code with Git/GitHub.",
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "Academic & Training Projects",
+    desc: "Applied React.js and modern frontend tools in real-world style projects during studies and professional training.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "Independent Frontend Developer",
+    desc: "Created web applications using React.js and modern tools, applying best practices and continuous learning.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
@@ -202,13 +202,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/Amis883",
   },
   {
     id: 2,
     img: "/twit.svg",
+    link: "mailto:Hodaa.kakhki@gmail.com",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://linkedin.com/in/hoda-kakhki/",
   },
 ];
