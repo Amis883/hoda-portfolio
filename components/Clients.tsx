@@ -14,7 +14,6 @@ function Clients() {
           direction="right"
           speed="slow"
         />
-        {/* </div> */}
         <div>
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 mt-10">
             {companies.map(({ id, img, name, nameImg }) => {
