@@ -1,3 +1,6 @@
+
+<img width="1420" height="723" alt="Screen" src="https://github.com/user-attachments/assets/3fa5885f-27fe-4fd9-8b44-97a792cc221b" />
+
 # Personal Portfolio Website
 
 A modern and responsive personal portfolio website to showcase my skills, projects, and approach.  
