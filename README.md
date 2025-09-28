@@ -32,9 +32,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 ## Screenshots
 | Desktop | Mobile |
 |---------|--------|
-| <img width="1420" height="723" alt="Screen" src="https://github.com/user-attachments/assets/ae8baf66-189d-47d6-a0d1-306b010d9882" />
- | <img width="409" height="701" alt="screen-1" src="https://github.com/user-attachments/assets/e042ad55-a75e-4d0c-bcf9-142e2bada910" />
- |
+| <img width="1420" height="723" alt="Screen" src="https://github.com/user-attachments/assets/ae8baf66-189d-47d6-a0d1-306b010d9882" />| <img width="409" height="701" alt="screen-1" src="https://github.com/user-attachments/assets/e042ad55-a75e-4d0c-bcf9-142e2bada910" />|
 
 ---
 
