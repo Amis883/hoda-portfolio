@@ -72,19 +72,19 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    title: "Build Ecommerce Like Amazon – MERN Stack",
+    des: "A full-featured eCommerce platform inspired by Amazon, built with the MERN stack. Includes product listings, cart, checkout, user authentication, and order management.",
+    img: "/amazon.png",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "/ui.earth.com",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
+    title: "The Local Weather – Vue App",
+    des: "Stay updated with live weather information around the world. Search by city, view temperature, highs & lows, and save your favorite locations. Built with Vue 3 for a clean and simple experience.",
+    img: "/weatherApp.jpg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    link: "https://weather-app-amis883.vercel.app/",
   },
   {
     id: 3,
