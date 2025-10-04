@@ -52,5 +52,3 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
 ---
 
-##  License
-This project is licensed under the MIT License.
