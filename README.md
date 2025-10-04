@@ -23,8 +23,10 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
 ---
 
-## Live Demo
- [View Portfolio Online](https://your-portfolio.vercel.app)  
+ ## Demo Website
+
+👉 [View Live Demo](https://hoda-portfolio-mj090ybfv-amis883s-projects.vercel.app/)
+
 *(replace this with your actual deployed link on Vercel)*
 
 ---
