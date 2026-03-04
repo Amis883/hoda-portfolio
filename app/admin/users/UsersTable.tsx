@@ -27,10 +27,10 @@ export default function UsersTable() {
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Role</th>
+            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Name</th>
+            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Email</th>
+            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Status</th>
+            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Role</th>
           </tr>
         </thead>
 
