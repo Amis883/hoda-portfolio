@@ -1,4 +1,12 @@
-export const users = [
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  status: "active" | "suspended" | "pending";
+  role: string;
+};
+
+export const users: User[] = [
   {
     id: 1,
     name: "Alice Johnson",
@@ -17,14 +25,14 @@ export const users = [
     id: 3,
     name: "Sara Miller",
     email: "sara@example.com",
-    status: "suspended",
+    status: "active",
     role: "user",
   },
   {
     id: 4,
     name: "David Kim",
     email: "david@example.com",
-    status: "active",
+    status: "suspended",
     role: "user",
   },
 ];
