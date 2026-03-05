@@ -71,10 +71,10 @@ export const projects = [
   {
     id: 1,
     title: "Admin Dashboard – User Management",
-    des: "A modern admin dashboard for managing users with search, filtering, sorting, pagination and modal forms.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    des: "Modern admin dashboard with CRUD, search, filtering, sorting and pagination.",
+    img: "/admin-dashboard.png",
+    iconLists: ["/re.svg", "/next.svg", "/tail.svg", "/ts.svg"],
+    link: "/admin/users",
   },
   {
     id: 2,
