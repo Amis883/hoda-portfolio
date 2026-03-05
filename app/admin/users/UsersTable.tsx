@@ -2,15 +2,42 @@
 import { useState } from "react";
 import { users } from "@/data/users";
 import StatusBadge from "@/components/ui/StatusBadge";
+type SortField = "name" | "email";
 export default function UsersTable() {
+  //Search
   const [search, setSearch] = useState("");
-  const filteredUsers = users.filter(
-    (user) =>
+  const [statusFilter, setStatusFilter] = useState("all");
+
+  //Sort
+
+  const [sortField, setSortField] = useState<"name" | "email">("name");
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch =
       user.name.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase()),
-  );
+      user.email.toLowerCase().includes(search.toLowerCase());
+
+    const matchesStatus =
+      statusFilter === "all" || user.status === statusFilter;
+
+    return matchesSearch && matchesStatus;
+  });
+
+  const sortedUsers = [...filteredUsers].sort((a, b) => {
+    const valueA = a[sortField];
+    const valueB = b[sortField];
+    if (valueA < valueB) return sortDirection === "asc" ? -1 : 1;
+    if (valueA > valueB) return sortDirection === "asc" ? 1 : -1;
+    return 0;
+  });
   return (
     <div>
+      <div style={{ marginBottom: "15px", display: "flex", gap: "12px" }}>
+        <button onClick={() => setStatusFilter("all")}>All</button>
+        <button onClick={() => setStatusFilter("active")}>Active</button>
+        <button onClick={() => setStatusFilter("pending")}>Pending</button>
+        <button onClick={() => setStatusFilter("suspended")}>Suspended</button>
+      </div>
       <input
         type="text"
         placeholder="Search users..."
@@ -27,22 +54,50 @@ export default function UsersTable() {
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>
-            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Name</th>
-            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Email</th>
-            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Status</th>
-            <th style={{ textAlign: "left", paddingBottom: "10px" }}>Role</th>
+            <th
+              // style={{ textAlign: "left", paddingBottom: "12px" }}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setSortField("name");
+                setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+              }}
+            >
+              Name
+            </th>
+            <th
+              // style={{ textAlign: "left", paddingBottom: "12px" }}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setSortField("email");
+                setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+              }}
+            >
+              Email
+            </th>
+            <th style={{ textAlign: "left", paddingBottom: "12px" }}>Status</th>
+            <th style={{ textAlign: "left", paddingBottom: "12px" }}>Role</th>
           </tr>
         </thead>
 
         <tbody>
-          {filteredUsers.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>
+          {sortedUsers.map((user) => (
+            <tr
+              key={user.id}
+              style={{
+                borderBottom: "1px solid #1f2937",
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#111")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "transparent")
+              }
+            >
+              <td style={{ padding: "12px 8px" }}>{user.name}</td>
+              <td style={{ padding: "12px 8px" }}>{user.email}</td>
+              <td style={{ padding: "12px 8px" }}>
                 <StatusBadge status={user.status as "active" | "suspended"} />
               </td>
-              <td>{user.role}</td>
+              <td style={{ padding: "12px 8px" }}>{user.role}</td>
             </tr>
           ))}
         </tbody>
