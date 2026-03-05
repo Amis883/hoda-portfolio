@@ -2,6 +2,7 @@ import React from "react";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa6";
+import Link from "next/link";
 function RecentProject() {
   return (
     <div className="py-20" id="projects">
@@ -40,9 +41,13 @@ function RecentProject() {
                   ))}
                 </div>
                 <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
-                  </p>
+                  <Link
+                    href="/admin/users"
+                    target="_blank"
+                    className="text-purple-400 hover:text-purple-300"
+                  >
+                    Check Live Site →
+                  </Link>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>
               </div>
