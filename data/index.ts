@@ -7,7 +7,6 @@ export const navItems = [
 
 export const gridItems = [
   {
-  {
     id: 1,
     title: "I'm very flexible with time zone communications",
     description: "",
@@ -16,7 +15,6 @@ export const gridItems = [
     titleClassName: "justify-start",
     img: "",
     spareImg: "",
-  
   },
   {
     id: 2,
