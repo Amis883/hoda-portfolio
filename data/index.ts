@@ -7,12 +7,16 @@ export const navItems = [
 
 export const gridItems = [
   {
+  {
     id: 1,
-    title: "Admin Dashboard – User Management",
-    des: "Admin dashboard with CRUD operations, search, filtering, sorting, pagination and modal forms.",
-    img: "/admin-dashboard.png",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
-    link: "/admin/users",
+    title: "I'm very flexible with time zone communications",
+    description: "",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  
   },
   {
     id: 2,
