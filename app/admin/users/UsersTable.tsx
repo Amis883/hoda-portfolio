@@ -5,6 +5,7 @@ import AddUserModal from "./AddUserModal";
 import { users as initialUsers } from "@/data/users";
 import type { User } from "@/data/users";
 import EditUserModal from "./EditUserModal";
+import DeleteUserModal from "./DeleteUserModal";
 
 type SortField = "name" | "email";
 export default function UsersTable() {
@@ -54,6 +55,15 @@ export default function UsersTable() {
   const openEdit = (user: User) => {
     setEditUser(user);
     setShowEditModal(true);
+  };
+  const [deleteUser, setDeleteUser] = useState<User | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const openDelete = (user: User) => {
+    setDeleteUser(user);
+    setShowDeleteModal(true);
+  };
+  const removeUser = (id: number) => {
+    setUsersState((prev) => prev.filter((u) => u.id !== id));
   };
   const addUser = (newUser: Omit<User, "id">) => {
     setUsersState((prev) => {
@@ -181,12 +191,19 @@ export default function UsersTable() {
                 </td>
 
                 <td className="py-3 px-2">{user.role}</td>
-                <td className="py-3 px-2">
+                <td className="py-3 px-2 flex gap-2">
                   <button
                     onClick={() => openEdit(user)}
                     className="text-sm bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded"
                   >
                     Edit
+                  </button>
+
+                  <button
+                    onClick={() => openDelete(user)}
+                    className="text-sm border border-red-500 text-red-400 hover:bg-red-500 hover:text-black px-3 py-1 rounded"
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -231,6 +248,15 @@ export default function UsersTable() {
         onSave={(user) => {
           updateUser(user);
           setShowEditModal(false);
+        }}
+      />
+      <DeleteUserModal
+        open={showDeleteModal}
+        user={deleteUser}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={(id) => {
+          removeUser(id);
+          setShowDeleteModal(false);
         }}
       />
     </div>
