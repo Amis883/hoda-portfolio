@@ -4,6 +4,7 @@ import StatusBadge from "@/components/ui/StatusBadge";
 import AddUserModal from "./AddUserModal";
 import { users as initialUsers } from "@/data/users";
 import type { User } from "@/data/users";
+import EditUserModal from "./EditUserModal";
 
 type SortField = "name" | "email";
 export default function UsersTable() {
@@ -47,6 +48,13 @@ export default function UsersTable() {
 
   const startUser = indexOfFirstUser + 1;
   const endUser = Math.min(indexOfLastUser, totalUsers);
+
+  const [editUser, setEditUser] = useState<User | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const openEdit = (user: User) => {
+    setEditUser(user);
+    setShowEditModal(true);
+  };
   const addUser = (newUser: Omit<User, "id">) => {
     setUsersState((prev) => {
       const updated = [
@@ -61,6 +69,11 @@ export default function UsersTable() {
 
       return updated;
     });
+  };
+  const updateUser = (updatedUser: User) => {
+    setUsersState((prev) =>
+      prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)),
+    );
   };
   return (
     <div>
@@ -123,7 +136,7 @@ export default function UsersTable() {
                 setSortDirection(sortDirection === "asc" ? "desc" : "asc");
               }}
             >
-              Name{" "}
+              Name
               {sortField === "name" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
 
@@ -134,12 +147,13 @@ export default function UsersTable() {
                 setSortDirection(sortDirection === "asc" ? "desc" : "asc");
               }}
             >
-              Email{" "}
+              Email
               {sortField === "email" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
 
             <th className="text-left pb-3">Status</th>
             <th className="text-left pb-3">Role</th>
+            <th className="text-left pb-3">Actions</th>
           </tr>
         </thead>
 
@@ -167,6 +181,14 @@ export default function UsersTable() {
                 </td>
 
                 <td className="py-3 px-2">{user.role}</td>
+                <td className="py-3 px-2">
+                  <button
+                    onClick={() => openEdit(user)}
+                    className="text-sm bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded"
+                  >
+                    Edit
+                  </button>
+                </td>
               </tr>
             ))
           )}
@@ -176,15 +198,9 @@ export default function UsersTable() {
       <div className="mt-3 text-zinc-400 text-sm">
         Showing {startUser}–{endUser} of {totalUsers} users
       </div>
-      <div
-        style={{
-          marginTop: "20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="mt-5 flex items-center justify-between text-sm text-zinc-400">
         <button
+          className="px-3 py-1 bg-zinc-800 rounded hover:bg-zinc-700 disabled:opacity-40"
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -196,6 +212,7 @@ export default function UsersTable() {
         </span>
 
         <button
+          className="px-3 py-1 bg-zinc-800 rounded hover:bg-zinc-700 disabled:opacity-40"
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
@@ -206,6 +223,15 @@ export default function UsersTable() {
         open={showModal}
         onClose={() => setShowModal(false)}
         onAdd={addUser}
+      />
+      <EditUserModal
+        open={showEditModal}
+        user={editUser}
+        onClose={() => setShowEditModal(false)}
+        onSave={(user) => {
+          updateUser(user);
+          setShowEditModal(false);
+        }}
       />
     </div>
   );
