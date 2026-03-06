@@ -21,7 +21,7 @@ function RecentProject() {
                 <img
                   src="/bg.png"
                   alt="background"
-                  className="absolute w-full h-full object-cover opacity-30"
+                  className="relative z-10 w-full h-full object-cover rounded-xl"
                 />
 
                 <img
