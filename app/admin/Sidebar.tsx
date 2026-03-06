@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-export default function Sidebar() {
+type SidebarProps = {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+};
+export default function Sidebar({ open, setOpen }: SidebarProps) {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname.startsWith(path);
@@ -15,15 +18,7 @@ export default function Sidebar() {
   });
 
   return (
-    <aside
-      style={{
-        width: "220px",
-        background: "#111",
-        color: "white",
-        padding: "20px",
-        minHeight: "100vh",
-      }}
-    >
+    <aside className="w-64 bg-zinc-900 min-h-screen p-6">
       <h2>ControlHub</h2>
 
       <nav

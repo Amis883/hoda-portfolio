@@ -1,15 +1,23 @@
-import Sidebar from "@/app/admin/Sidebar";
+"use client";
+
+import { useState } from "react";
+import Sidebar from "./Sidebar";
+
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-black text-white">
-      <Sidebar />
+      <Sidebar open={open} setOpen={setOpen} />
 
-      <main className="flex-1 p-8 overflow-auto">{children}</main>
+      <div className="flex-1">
+        <main className="p-4 md:p-8">{children}</main>
+      </div>
     </div>
   );
 }

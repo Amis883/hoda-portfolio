@@ -87,7 +87,7 @@ export default function UsersTable() {
   };
   return (
     <div>
-      <div className="flex items-center justify-between my-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 my-4">
         <button
           onClick={() => setShowModal(true)}
           className="bg-green-500 hover:bg-green-400 text-black px-4 py-2 rounded-md text-sm font-medium"
@@ -96,7 +96,7 @@ export default function UsersTable() {
         </button>
       </div>
 
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
         <input
           type="text"
           placeholder="Search users..."
@@ -135,83 +135,85 @@ export default function UsersTable() {
           </button>
         </div>
       </div>
-
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="text-left text-sm text-zinc-400">
-            <th
-              className="cursor-pointer pb-3"
-              onClick={() => {
-                setSortField("name");
-                setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-              }}
-            >
-              Name
-              {sortField === "name" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th
-              className="cursor-pointer pb-3"
-              onClick={() => {
-                setSortField("email");
-                setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-              }}
-            >
-              Email
-              {sortField === "email" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th className="text-left pb-3">Status</th>
-            <th className="text-left pb-3">Role</th>
-            <th className="text-left pb-3">Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {paginatedUsers.length === 0 ? (
-            <tr>
-              <td colSpan={4} className="py-6 text-center text-zinc-400">
-                No users found
-              </td>
-            </tr>
-          ) : (
-            paginatedUsers.map((user) => (
-              <tr
-                key={user.id}
-                className="border-b border-zinc-800 hover:bg-zinc-900 transition"
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[600px]">
+          {/* 
+      <table className="w-full border-collapse"> */}
+          <thead>
+            <tr className="text-left text-sm text-zinc-400">
+              <th
+                className="cursor-pointer pb-3"
+                onClick={() => {
+                  setSortField("name");
+                  setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+                }}
               >
-                <td className="py-3 px-2">{user.name}</td>
+                Name
+                {sortField === "name" && (sortDirection === "asc" ? "↑" : "↓")}
+              </th>
 
-                <td className="py-3 px-2">{user.email}</td>
+              <th
+                className="cursor-pointer pb-3"
+                onClick={() => {
+                  setSortField("email");
+                  setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+                }}
+              >
+                Email
+                {sortField === "email" && (sortDirection === "asc" ? "↑" : "↓")}
+              </th>
 
-                <td className="py-3 px-2">
-                  <StatusBadge
-                    status={user.status as "active" | "pending" | "suspended"}
-                  />
-                </td>
+              <th className="text-left pb-3">Status</th>
+              <th className="text-left pb-3">Role</th>
+              <th className="text-left pb-3">Actions</th>
+            </tr>
+          </thead>
 
-                <td className="py-3 px-2">{user.role}</td>
-                <td className="py-3 px-2 flex gap-2">
-                  <button
-                    onClick={() => openEdit(user)}
-                    className="text-sm bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded"
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    onClick={() => openDelete(user)}
-                    className="text-sm border border-red-500 text-red-400 hover:bg-red-500 hover:text-black px-3 py-1 rounded"
-                  >
-                    Delete
-                  </button>
+          <tbody>
+            {paginatedUsers.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="py-6 text-center text-zinc-400">
+                  No users found
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              paginatedUsers.map((user) => (
+                <tr
+                  key={user.id}
+                  className="border-b border-zinc-800 hover:bg-zinc-900 transition"
+                >
+                  <td className="py-3 px-2">{user.name}</td>
 
+                  <td className="py-3 px-2">{user.email}</td>
+
+                  <td className="py-3 px-2">
+                    <StatusBadge
+                      status={user.status as "active" | "pending" | "suspended"}
+                    />
+                  </td>
+
+                  <td className="py-3 px-2">{user.role}</td>
+                  <td className="py-3 px-2 flex gap-2">
+                    <button
+                      onClick={() => openEdit(user)}
+                      className="text-sm bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={() => openDelete(user)}
+                      className="text-sm border border-red-500 text-red-400 hover:bg-red-500 hover:text-black px-3 py-1 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
       <div className="mt-3 text-zinc-400 text-sm">
         Showing {startUser}–{endUser} of {totalUsers} users
       </div>
