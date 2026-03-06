@@ -8,20 +8,16 @@ function RecentProject() {
   return (
     <section className="py-20" id="projects">
       <h1 className="heading">
-        A small selection of <span className="text-purple">recent projects</span>
+        A small selection of{" "}
+        <span className="text-purple">recent projects</span>
       </h1>
 
       <div className="flex flex-wrap justify-center gap-12 mt-16">
         {projects.map(({ id, title, des, img, iconLists, link }) => (
-          <div
-            key={id}
-            className="w-[90vw] sm:w-[560px] flex justify-center"
-          >
+          <div key={id} className="w-[90vw] sm:w-[560px] flex justify-center">
             <PinContainer title={title} href={link}>
-              
               {/* IMAGE */}
               <div className="relative w-full h-[260px] rounded-2xl bg-[#13162d] flex items-center justify-center overflow-hidden mb-8">
-
                 <img
                   src="/bg.png"
                   alt="background"
@@ -36,9 +32,7 @@ function RecentProject() {
               </div>
 
               {/* TITLE */}
-              <h1 className="font-bold text-xl lg:text-2xl mb-2">
-                {title}
-              </h1>
+              <h1 className="font-bold text-xl lg:text-2xl mb-2">{title}</h1>
 
               {/* DESCRIPTION */}
               <p className="text-sm lg:text-base text-gray-300 line-clamp-2">
@@ -47,7 +41,6 @@ function RecentProject() {
 
               {/* TECH + LINK */}
               <div className="flex items-center justify-between mt-6">
-
                 <div className="flex items-center">
                   {iconLists.map((icon, index) => (
                     <div
@@ -68,7 +61,6 @@ function RecentProject() {
                   Check Live Site
                   <FaLocationArrow />
                 </Link>
-
               </div>
             </PinContainer>
           </div>
