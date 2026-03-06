@@ -17,7 +17,7 @@ function RecentProject() {
           <div key={id} className="w-[90vw] sm:w-[560px] flex justify-center">
             <PinContainer title={title} href={link}>
               {/* IMAGE */}
-              <div className="relative w-full h-[260px] rounded-2xl bg-[#13162d] flex items-center justify-center overflow-hidden mb-8">
+              <div className="relative w-full h-[220px] rounded-2xl bg-[#13162d] flex items-center justify-center mb-8">
                 <img
                   src="/bg.png"
                   alt="background"
@@ -27,7 +27,7 @@ function RecentProject() {
                 <img
                   src={img}
                   alt={title}
-                  className="relative z-10 max-h-[90%] object-contain"
+                  className="relative z-10 w-full h-full object-cover rounded-xl"
                 />
               </div>
 
