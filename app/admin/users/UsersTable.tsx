@@ -1,12 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StatusBadge from "@/components/ui/StatusBadge";
 import AddUserModal from "./AddUserModal";
 import { users as initialUsers } from "@/data/users";
 import type { User } from "@/data/users";
 import EditUserModal from "./EditUserModal";
 import DeleteUserModal from "./DeleteUserModal";
-
+import RoleBadge from "@/components/ui/RoleBadge";
+import toast from "react-hot-toast";
 type SortField = "name" | "email";
 export default function UsersTable() {
   //Search
@@ -22,6 +23,9 @@ export default function UsersTable() {
   //Modal
   const [showModal, setShowModal] = useState(false);
   const [usersState, setUsersState] = useState<User[]>(initialUsers);
+
+  const [loading, setLoading] = useState(true);
+
   const filteredUsers = usersState.filter((user) => {
     const matchesSearch =
       user.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -64,6 +68,7 @@ export default function UsersTable() {
   };
   const removeUser = (id: number) => {
     setUsersState((prev) => prev.filter((u) => u.id !== id));
+    toast.success("User deleted");
   };
   const addUser = (newUser: Omit<User, "id">) => {
     setUsersState((prev) => {
@@ -79,12 +84,40 @@ export default function UsersTable() {
 
       return updated;
     });
+    toast.success("User added successfully");
   };
   const updateUser = (updatedUser: User) => {
     setUsersState((prev) =>
       prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)),
     );
+    toast.success("User added successfully");
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+  const SkeletonRow = () => (
+    <tr className="border-b border-zinc-800 animate-pulse">
+      <td className="py-3 px-2">
+        <div className="h-4 w-24 bg-zinc-700 rounded"></div>
+      </td>
+      <td className="py-3 px-2">
+        <div className="h-4 w-32 bg-zinc-700 rounded"></div>
+      </td>
+      <td className="py-3 px-2">
+        <div className="h-4 w-16 bg-zinc-700 rounded"></div>
+      </td>
+      <td className="py-3 px-2">
+        <div className="h-4 w-16 bg-zinc-700 rounded"></div>
+      </td>
+      <td className="py-3 px-2">
+        <div className="h-4 w-20 bg-zinc-700 rounded"></div>
+      </td>
+    </tr>
+  );
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 my-4">
@@ -170,7 +203,9 @@ export default function UsersTable() {
           </thead>
 
           <tbody>
-            {paginatedUsers.length === 0 ? (
+            {loading ? (
+              Array.from({ length: 5 }).map((_, i) => <SkeletonRow key={i} />)
+            ) : paginatedUsers.length === 0 ? (
               <tr>
                 <td colSpan={4} className="py-6 text-center text-zinc-400">
                   No users found
@@ -182,8 +217,15 @@ export default function UsersTable() {
                   key={user.id}
                   className="border-b border-zinc-800 hover:bg-zinc-900 transition"
                 >
-                  <td className="py-3 px-2">{user.name}</td>
+                  <td className="py-3 px-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-zinc-700 flex items-center justify-center text-xs">
+                        {user.name.charAt(0)}
+                      </div>
 
+                      <span>{user.name}</span>
+                    </div>
+                  </td>
                   <td className="py-3 px-2">{user.email}</td>
 
                   <td className="py-3 px-2">
@@ -192,7 +234,9 @@ export default function UsersTable() {
                     />
                   </td>
 
-                  <td className="py-3 px-2">{user.role}</td>
+                  <td className="py-3 px-2">
+                    <RoleBadge role={user.role} />
+                  </td>
                   <td className="py-3 px-2 flex gap-2">
                     <button
                       onClick={() => openEdit(user)}

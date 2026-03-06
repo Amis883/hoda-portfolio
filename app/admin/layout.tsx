@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-
+import { Toaster } from "react-hot-toast";
 
 export default function AdminLayout({
   children,
@@ -16,7 +16,9 @@ export default function AdminLayout({
       <Sidebar open={open} setOpen={setOpen} />
 
       <div className="flex-1">
-        <main className="p-4 md:p-8">{children}</main>
+        <main className="p-4 md:p-8">
+          {children} <Toaster position="top-right" />
+        </main>
       </div>
     </div>
   );
