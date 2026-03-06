@@ -1,8 +1,9 @@
+export type UserStatus = "active" | "pending" | "suspended";
 export type User = {
   id: number;
   name: string;
   email: string;
-  status: "active" | "suspended" | "pending";
+  status: UserStatus;
   role: string;
 };
 

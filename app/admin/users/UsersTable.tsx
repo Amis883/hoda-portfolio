@@ -8,6 +8,7 @@ import EditUserModal from "./EditUserModal";
 import DeleteUserModal from "./DeleteUserModal";
 import RoleBadge from "@/components/ui/RoleBadge";
 import toast from "react-hot-toast";
+import StatusDropdown from "@/components/ui/StatusDropdown";
 type SortField = "name" | "email";
 export default function UsersTable() {
   //Search
@@ -229,8 +230,11 @@ export default function UsersTable() {
                   <td className="py-3 px-2">{user.email}</td>
 
                   <td className="py-3 px-2">
-                    <StatusBadge
-                      status={user.status as "active" | "pending" | "suspended"}
+                    <StatusDropdown
+                      status={user.status}
+                      onChange={(newStatus) => {
+                        updateUser({ ...user, status: newStatus });
+                      }}
                     />
                   </td>
 
