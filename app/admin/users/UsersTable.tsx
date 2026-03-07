@@ -20,7 +20,7 @@ export default function UsersTable() {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 100;
+  const usersPerPage = 3;
   //Modal
   const [showModal, setShowModal] = useState(false);
   const [usersState, setUsersState] = useState<User[]>(initialUsers);
