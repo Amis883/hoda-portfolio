@@ -51,4 +51,16 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 │ └── screenshots
 
 ---
+## ControlHub Admin Dashboard
 
+A modern SaaS-style admin dashboard with user management.
+
+Features:
+- Users CRUD
+- Filters & search
+- Charts
+- Dark / Light theme
+- Responsive layout
+
+Live Demo:
+[https://yourdomain.com/admin/dashboard](http://localhost:3000/admin/users)
