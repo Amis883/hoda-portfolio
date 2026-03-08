@@ -1,6 +1,7 @@
 "use client";
 
 import { Bell, Search } from "lucide-react";
+import ThemeToggle from "./dashboard/ThemeToggle";
 
 export default function AdminHeader() {
   return (
@@ -16,6 +17,7 @@ export default function AdminHeader() {
 
       {/* right section */}
       <div className="flex items-center gap-4">
+        <ThemeToggle/>
         {/* notification */}
         <button className="relative">
           <Bell size={20} className="text-zinc-300" />
