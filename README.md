@@ -63,4 +63,4 @@ Features:
 - Responsive layout
 
 Live Demo:
-[[https://yourdomain.com/admin/dashboard](http://localhost:3000/admin/users)](https://hoda-portfolio-ruby.vercel.app/admin/users)
+(https://hoda-portfolio-ruby.vercel.app/admin/users)
