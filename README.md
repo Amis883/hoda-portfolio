@@ -25,7 +25,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
  ## Demo Website
 
-👉 [View Live Demo][(https://hoda-portfolio-og2uh2f83-amis883s-projects.vercel.app/)]
+👉 [View Live Demo][(https://hoda-portfolio-m0c8zsv98-amis883s-projects.vercel.app/)]
 
 ---
 
