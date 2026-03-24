@@ -81,12 +81,12 @@ export const projects = [
     link: "/admin/users",
   },
   {
-    id: 2,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    id: 1,
+    title: "AI Notes SaaS",
+    des: "AI-powered note taking app that summarizes long text using OpenAI API.",
+    img: "/ai-notes.png",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/openai.svg"],
+    link: "https://ai-notes-steel-zeta.vercel.app",
   },
 ];
 export const testimonials = [
