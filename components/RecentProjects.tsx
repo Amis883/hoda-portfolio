@@ -1,67 +1,82 @@
 import React from "react";
+import Image from "next/image";
+import { FaLocationArrow } from "react-icons/fa6";
+
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
-import { FaLocationArrow } from "react-icons/fa6";
-import Image from "next/image";
 
-function RecentProject() {
+const RecentProjects = () => {
   return (
-    <section className="py-20" id="projects">
+    <section id="projects" className="py-20">
+      {/* Heading */}
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
 
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10">
-        {projects.map(({ id, title, des, img, iconLists, link }) => (
+      {/* Projects Grid */}
+      <div className="mt-10 flex flex-wrap justify-center items-center gap-x-24 gap-y-8 p-4">
+        {projects.map((project) => (
           <div
-            key={id}
-            className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
+            key={project.id}
+            className="flex items-center justify-center 
+                       w-[80vw] sm:w-[570px] 
+                       h-[32rem] sm:h-[41rem] 
+                       lg:min-h-[32.5rem]"
           >
-            <PinContainer title={title} href={link}>
-              {/* Project Image */}
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[30vh] mb-10">
-                <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]">
+            {/* ✅ فقط این لینک باقی می‌مونه */}
+            <PinContainer title={project.title} href={project.link}>
+              {/* Image Section */}
+              <div
+                className="relative mb-10 flex items-center justify-center 
+                              w-[80vw] sm:w-96 h-[30vh] overflow-hidden"
+              >
+                {/* Background */}
+                <div className="relative w-full h-full overflow-hidden rounded-3xl bg-[#13162d]">
                   <Image
                     src="/bg.png"
-                    alt="background"
+                    alt="project background"
                     fill
                     className="object-cover"
                   />
                 </div>
 
+                {/* Main Image */}
                 <Image
-                  src={img}
-                  alt={title}
+                  src={project.img}
+                  alt={project.title}
                   width={400}
                   height={300}
-                  className="mb-4 rotate-2"
+                  className="rotate-2 mb-4"
                 />
               </div>
 
               {/* Title */}
-              <h2 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                {title}
+              <h2 className="text-base md:text-xl lg:text-2xl font-bold line-clamp-1">
+                {project.title}
               </h2>
 
               {/* Description */}
-              <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2">
-                {des}
+              <p className="text-sm lg:text-xl font-light line-clamp-2">
+                {project.des}
               </p>
 
-              {/* Tech Stack + Link */}
-              <div className="flex items-center justify-between mt-7 mb-3">
-                {/* Tech Icons */}
+              {/* Footer */}
+              <div className="mt-7 mb-3 flex items-center justify-between">
+                {/* Tech Stack */}
                 <div className="flex items-center">
-                  {iconLists.map((icon, index) => (
+                  {project.iconLists.map((icon, i) => (
                     <div
-                      key={index}
-                      className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                      style={{ transform: `translateX(-${index * 10}px)` }}
+                      key={`${project.id}-${icon}`}
+                      className="flex items-center justify-center 
+                                 w-8 h-8 lg:w-10 lg:h-10 
+                                 rounded-full bg-black  white
+                                 border border-white/[0.2]"
+                      style={{ transform: `translateX(-${i * 10}px)` }}
                     >
                       <Image
                         src={icon}
-                        alt="tech"
+                        alt="technology"
                         width={20}
                         height={20}
                         className="p-1"
@@ -70,10 +85,10 @@ function RecentProject() {
                   ))}
                 </div>
 
-                {/* Live Site */}
-                <div className="flex items-center text-purple-400 hover:text-purple-300">
+                {/* ✅ بدون لینک اضافه */}
+                <div className="flex items-center text-purple-400">
                   <span>Check Live Site</span>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <FaLocationArrow className="ms-3" />
                 </div>
               </div>
             </PinContainer>
@@ -82,6 +97,6 @@ function RecentProject() {
       </div>
     </section>
   );
-}
+};
 
-export default RecentProject;
+export default RecentProjects;

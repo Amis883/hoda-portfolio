@@ -81,10 +81,10 @@ export const projects = [
     link: "/admin/users",
   },
   {
-    id: 1,
+    id: 2,
     title: "AI Notes SaaS",
     des: "AI-powered note taking app that summarizes long text using OpenAI API.",
-    img: "/ai-notes.png",
+    img: "/ainote.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/openai.svg"],
     link: "https://ai-notes-steel-zeta.vercel.app",
   },
